@@ -8,6 +8,11 @@
 #
 
 include_recipe "apt"
+include_recipe "ack"
+include_recipe "rbenv::default"
+include_recipe "rbenv::ruby_build"
 
 package "tmux"
 package "vim"
+
+rbenv_ruby "1.9.3-p392"
