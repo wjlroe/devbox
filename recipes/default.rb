@@ -2,7 +2,7 @@
 # Cookbook Name:: devbox
 # Recipe:: default
 #
-# Copyright (C) 2013 YOUR_NAME
+# Copyright (C) 2013 William Roe
 #
 # All rights reserved - Do Not Redistribute
 #
