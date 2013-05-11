@@ -20,6 +20,3 @@ include_recipe "users::sysadmins"
 include_recipe "oh-my-zsh"
 
 rbenv_ruby node[:ruby_version]
-rbenv_gem "dottor" do
-  ruby_version node[:ruby_version]
-end
