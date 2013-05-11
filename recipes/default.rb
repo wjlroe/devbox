@@ -11,8 +11,15 @@ include_recipe "apt"
 include_recipe "ack"
 include_recipe "rbenv::default"
 include_recipe "rbenv::ruby_build"
+include_recipe "timezone-ii"
+include_recipe "sudo"
+include_recipe "zsh"
+include_recipe "tmux"
+include_recipe "vim"
+include_recipe "users::sysadmins"
+include_recipe "oh-my-zsh"
 
-package "tmux"
-package "vim"
-
-rbenv_ruby "1.9.3-p392"
+rbenv_ruby node[:ruby_version]
+rbenv_gem "dottor" do
+  ruby_version node[:ruby_version]
+end
