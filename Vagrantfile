@@ -1,25 +1,11 @@
-begin
-  require 'berkshelf/vagrant'
-rescue LoadError => e
-  puts e.inspect
-  puts "[WARNING] Berkshelf not found in your Vagrant's RubyGems but your Vagrantfile is attempting"
-  puts "[WARNING] to require the Berkshelf Vagrant plugin! Install the Berkshelf Vagrant plugin or"
-  puts "[WARNING] remove the 'require \"berkshelf/vagrant\"' line from the top of your Vagrantfile."
-  puts ""
-  puts "If you installed Vagrant by RubyGems:"
-  puts "  Install Berkshelf by running: \"gem install berkshelf\""
-  puts "If you installed Vagrant by one of the pre-packaged installers:"
-  puts "  Install Berkshelf by running: \"vagrant gem install berkshelf\""
-  puts ""
-end
-
-Vagrant::Config.run do |config|
+Vagrant.configure("2") do |config|
   # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
   # The path to the Berksfile to use with Vagrant Berkshelf
   # config.berkshelf.berksfile_path = "./Berksfile"
+  config.berkshelf.enabled = true
 
   # An array of symbols representing groups of cookbook described in the Vagrantfile
   # to exclusively install and copy to Vagrant's shelf.
@@ -29,7 +15,7 @@ Vagrant::Config.run do |config|
   # to skip installing and copying to Vagrant's shelf.
   # config.berkshelf.except = []
 
-  config.vm.host_name = "devbox-berkshelf"
+  config.vm.hostname = "devbox-berkshelf"
 
   config.vm.box = "opscode-precise64-chef-11-2-0"
   config.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_chef-11.2.0.box"
@@ -41,7 +27,7 @@ Vagrant::Config.run do |config|
   # via the IP. Host-only networks can talk to the host machine as well as
   # any other machines on the same network, but cannot be accessed (through this
   # network interface) by any external networks.
-  config.vm.network :hostonly, "33.33.33.10"
+  config.vm.network :private_network, ip: "33.33.33.10"
 
   # Assign this VM to a bridged network, allowing you to connect directly to a
   # network using the host's network device. This makes the VM appear as another
