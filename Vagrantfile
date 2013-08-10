@@ -1,7 +1,5 @@
 Vagrant.configure("2") do |config|
-  # All Vagrant configuration is done here. The most common configuration
-  # options are documented and commented below. For a complete reference,
-  # please see the online documentation at vagrantup.com.
+  config.omnibus.chef_version = :latest
 
   # The path to the Berksfile to use with Vagrant Berkshelf
   # config.berkshelf.berksfile_path = "./Berksfile"
@@ -17,8 +15,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.hostname = "devbox-berkshelf"
 
-  config.vm.box = "opscode-precise64-chef-11-4-4"
-  config.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_chef-11.4.4.box"
+  config.vm.box = "opscode-precise64-noprovider"
+  config.vm.box_url = "https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box"
 
   # Boot with a GUI so you can see the screen. (Default is headless)
   # config.vm.boot_mode = :gui
