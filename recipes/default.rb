@@ -18,5 +18,7 @@ include_recipe "tmux"
 include_recipe "vim"
 include_recipe "users::sysadmins"
 include_recipe "oh-my-zsh"
+include_recipe "nginx"
+include_recipe "git"
 
 rbenv_ruby node[:ruby_version]
